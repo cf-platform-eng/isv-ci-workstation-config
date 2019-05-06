@@ -6,45 +6,29 @@
 
 ## Installation
 
-### Install [homebrew](https://brew.sh)
+* Install basic deps: 
+    * [homebrew](https://brew.sh)
+    * [rcm](https://github.com/thoughtbot/rcm)
+    ```
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install thoughtbot/formulae/rcm
+    ```
+* Clone this repo
+    ```
+    git clone https://github.com/cf-platform-eng/isv-ci-workstation-config.git ~/workastation/isv-ci-workstation-config
+    ```
 
-```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
-### Clone this repo
-
-```
-git clone https://github.com/cf-platform-eng/isv-ci-workstation-config.git
-```
-
-### Install [rcm](https://github.com/thoughtbot/rcm)
-
-```
-brew install thoughtbot/formulae/rcm
-```
-
-### Install the dotfiles
-
-```
-RCRC="${HOME}/workspace/isv-ci-workstation-config/dotfiles/rcrc" rcup -v
-```
-
-## Optional
-
-### Install the specified formulae and casks
-
-```
-brew bundle --global
-```
-
-#### Install [luan/nvim](https://github.com/luan/nvim), and python bindings
-
-```
-git clone https://github.com/luan/nvim ~/.config/nvim && \
-  pip3 install neovim
-```
-
+* Install the dotfiles
+    ```bash
+    cd ~/isv-ci-workstation-config 
+    ./install.sh
+    ```
+    
+* Install brewfiles
+    ```bash
+    source ~/.bashrc # or restart iterm
+    bup # brew update command injected by our bash dotfiles.
+    ```
 
 ### Install a new key for github etc
 
