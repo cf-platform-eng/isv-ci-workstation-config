@@ -40,7 +40,7 @@ ssh-keygen -y -f ~/.ssh/id_github | pbcopy
 ```
 
 ### Hand install apps
-* istat menu or similar (there's a cask but it doesn't install safely)
-* Goland, Pycharm
+* Install Docker Desktop (no brew for it)
+* Goland, Pycharm TODO: add to brewfile
 * Zoom (sign in to the site through Okta)
 
