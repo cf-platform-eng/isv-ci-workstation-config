@@ -137,3 +137,9 @@ eval "$(direnv hook bash)"
 
 ## FASD
 eval "$(fasd --init auto)"
+
+## Git complete
+. ~/git-completion.bash
+
+## Make complete
+. ~/makefile-completion.bash
