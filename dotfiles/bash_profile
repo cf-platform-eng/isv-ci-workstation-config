@@ -16,11 +16,11 @@ macos_setup() {
 # Homebrew
 export HOMEBREW_NO_ANALYTICS=1 # Turn of homebrew data collection
 export HOMEBREW_NO_INSECURE_REDIRECT=1 # Disallow `https` => `http` redirects
-# export HOMEBREW_CASK_OPTS='--require-sha'
 
 bup() {
+  # we don't force cleanup, just advise on whats different
   brew update && \
-    brew bundle cleanup --global --force && \
+    brew bundle cleanup --global && \
     brew bundle --global && \
     brew upgrade && brew cask upgrade && \
     brew cleanup && \
@@ -29,3 +29,7 @@ bup() {
 
 source "${HOME}/.bashrc"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+# Iterm 2 shell integration (if installed)
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
