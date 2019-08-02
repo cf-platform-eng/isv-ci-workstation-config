@@ -30,6 +30,10 @@ bup() {
 source "${HOME}/.bashrc"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
+# Insert bin dir
+mkdir -p "${HOME}/bin"
+export PATH="${HOME}/bin:$PATH"
+
 # Iterm 2 shell integration (if installed)
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
