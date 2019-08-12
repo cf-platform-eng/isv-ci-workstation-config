@@ -32,7 +32,7 @@ Use safari and terminal... chrome and iterm get installed by the brewfiles
 
     ```shell
     ssh-keygen -f ~/.ssh/id_github # this file is in the ssh config so don't use a different name unless you want to mess with dotfiles 
-    ssh-add -K ~/.ssh/id_github.pub
+    ssh-add -K ~/.ssh/id_github
     ssh-keygen -y -f ~/.ssh/id_github | pbcopy
     # Public key is in your buffer, paste it into github
     ```
