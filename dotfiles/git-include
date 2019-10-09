@@ -42,3 +42,6 @@
 
 [format]
     pretty = format:%h %C(yellow)%ci%Creset %Cgreen%an%Creset | %s
+
+[commit]
+  template = ~/.gitmessage
