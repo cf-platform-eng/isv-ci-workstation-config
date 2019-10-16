@@ -39,6 +39,7 @@
 [core]
   pager = less -FXRS -x2
   excludesfile = ~/.gitignore
+  hooksPath = ~/workspace/git-hooks-core
 
 [format]
     pretty = format:%h %C(yellow)%ci%Creset %Cgreen%an%Creset | %s
