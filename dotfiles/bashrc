@@ -58,6 +58,28 @@ git_prompt() {
   echo "${reset_color}${status}${green} ${branch}${reset_color} ${reset_color}"
 }
 
+cf_prompt() {
+  local green="\\[\\e[0;32m\\]"
+  local red="\\[\\e[0;31m\\]"
+  local bold="\\[\\e[1m\\]"
+  local normal="\\[\\e[0m\\]"
+
+  local reset_color="\\[\\e[39m\\]"
+  local config="cat /Users/pivotal/.cf/config.json"
+#  local org="$(${config} | jq .OrganizationFields.Name -r)"
+  local space="$(${config} | jq .SpaceFields.Name -r)"
+
+
+  if [ "${space}" == "tile-dashboard" ]; then
+    space="🤠 🤠 🤠 ${red}${space}${normal}${reset_color} 🤠 🤠 🤠"
+  else
+    space="${green}[${space}]${reset_color}"
+  fi
+
+  echo "${reset_color}${space}${reset_color}"
+
+}
+
 set_ps1() {
   local green="\\[\\e[0;32m\\]"
   local purple="\\[\\e[0;35m\\]"
@@ -66,7 +88,7 @@ set_ps1() {
   local reset_color="\\[\\e[39m\\]"
 
   PS1="
-${cyan_bold}$(date +'%H:%M:%S') ${purple}\\h ${reset_color}in ${green}\\w
+${cyan_bold}$(date +'%H:%M:%S') $(cf_prompt) ${purple}\\h ${reset_color}in ${green}\\w
 ${cyan_bold}$(git_prompt)${green}→${reset_color} "
 
   export PS1
