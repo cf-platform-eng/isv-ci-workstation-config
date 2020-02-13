@@ -66,9 +66,8 @@ cf_prompt() {
 
   local reset_color="\\[\\e[39m\\]"
   local config="cat /Users/pivotal/.cf/config.json"
-#  local org="$(${config} | jq .OrganizationFields.Name -r)"
+  # local org="$(${config} | jq .OrganizationFields.Name -r)"
   local space="$(${config} | jq .SpaceFields.Name -r)"
-
 
   if [ "${space}" == "tile-dashboard" ]; then
     space="🤠 🤠 🤠 ${red}${space}${normal}${reset_color} 🤠 🤠 🤠"
@@ -148,7 +147,7 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH:/usr/local/go/bin
 
 # Ruby
-if command -v ruby > /dev/null && command -v gem > /dev/null; then
+if command -v ruby >/dev/null && command -v gem >/dev/null; then
   GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
   export GEM_HOME
   export PATH=${PATH}:"${GEM_HOME}/bin"
