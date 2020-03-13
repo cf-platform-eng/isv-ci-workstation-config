@@ -55,7 +55,18 @@ git_prompt() {
     status="${green}✓${reset_color}"
   fi
 
-  echo "${reset_color}${status}${green} ${branch}${reset_color} ${reset_color}"
+	git fetch 2>/dev/null 1>&2 &
+
+	local up=$(git rev-list --count --left-right origin...HEAD 2>/dev/null | cut -f 1)
+	local dn=$(git rev-list --count --left-right origin...HEAD 2>/dev/null | cut -f 2)
+
+	if [ ${up} -ne 0 ]; then
+		local diff="${red}↑${up} ↓${dn} "
+	else
+		local diff="${green}↑${up} ↓${dn} "
+	fi
+
+	echo "${reset_color}${status} ${diff}${green}${branch}${reset_color} ${reset_color}"
 }
 
 cf_prompt() {
