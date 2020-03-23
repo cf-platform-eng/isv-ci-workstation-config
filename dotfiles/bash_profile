@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 macos_setup() {
-  # inspired by https://mths.be/macos
-  defaults write com.apple.dock persistent-apps -array
-  defaults write com.apple.dock autohide -boolean true
-  defaults write com.apple.dock orientation -string left
+	# inspired by https://mths.be/macos
+	defaults write com.apple.dock persistent-apps -array
+	defaults write com.apple.dock autohide -boolean true
+	defaults write com.apple.dock orientation -string left
 
-  defaults write com.apple.menuextra.clock DateFormat -string 'EEE MMM d H:mm'
+	defaults write com.apple.menuextra.clock DateFormat -string 'EEE MMM d H:mm'
 
-  defaults write NSGlobalDomain AppleKeyboardUIMode -int 3               # enable full keyboard access
-  # appers not to work in high sierra / 10.13
-  defaults write NSGlobalDomain com.apple.keyboard.fnState -boolean true # enable function keys
+	defaults write NSGlobalDomain AppleKeyboardUIMode -int 3               # enable full keyboard access
+	# appers not to work in high sierra / 10.13
+	defaults write NSGlobalDomain com.apple.keyboard.fnState -boolean true # enable function keys
 }
 
 # Homebrew
@@ -18,14 +18,14 @@ export HOMEBREW_NO_ANALYTICS=1         # Turn of homebrew data collection
 export HOMEBREW_NO_INSECURE_REDIRECT=1 # Disallow `https` => `http` redirects
 
 bup() {
-  # we don't force cleanup, just advise on whats different
-  brew update &&
-    brew bundle cleanup --global &&
-    brew bundle --global &&
-    brew upgrade && brew cask upgrade &&
-    brew cleanup &&
-    brew doctor
-  brew cask doctor
+	# we don't force cleanup, just advise on whats different
+	brew update &&
+		brew bundle cleanup --global &&
+		brew bundle --global &&
+		brew upgrade && brew cask upgrade &&
+		brew cleanup &&
+		brew doctor
+	brew cask doctor
 }
 
 source "${HOME}/.bashrc"
@@ -43,10 +43,14 @@ source ~/.credhubrc
 
 #Simple function to get pivnet token
 pivnet-token() {
-  export PIVNET_TOKEN=$(credhub get -n /concourse/main/pivnet-token -j | jq -r .value)
+	export PIVNET_TOKEN=$(credhub get -n /concourse/main/pivnet-token -j | jq -r .value)
 }
 
 # NVM support
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+if [ -f "${HOME}/.bash_user" ]; then
+	source "${HOME}/.bash_user"
+fi
