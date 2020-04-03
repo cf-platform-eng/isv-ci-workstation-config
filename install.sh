@@ -12,3 +12,6 @@ cred-alert-cli update
 if [ ! -d$HOME/workspace/git-hooks-core ]; then
   git clone https://github.com/pivotal-cf/git-hooks-core.git $HOME/workspace/git-hooks-core
 fi
+
+
+echo 'Install GVM with: `bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)`'
