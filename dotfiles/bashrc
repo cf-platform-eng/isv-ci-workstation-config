@@ -104,6 +104,18 @@ ${cyan_bold}$(git_prompt)${green}→${reset_color} "
   export PS1
 }
 
+set_ps1_2() {
+  local green="\\[\\e[0;32m\\]"
+  local purple="\\[\\e[0;35m\\]"
+  local cyan_bold="\\[\\e[36;1m\\]"
+
+  local reset_color="\\[\\e[39m\\]"
+
+  PS1="${reset_color}${green}[CN-JEB Demo] \w\n$ ${reset_color} "
+
+  export PS1
+}
+
 ## PS1
 PROMPT_COMMAND=set_ps1
 
