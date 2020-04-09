@@ -53,6 +53,16 @@ export NVM_DIR="$HOME/.nvm"
 
 [[ -s "/Users/pivotal/.gvm/scripts/gvm" ]] && source "/Users/pivotal/.gvm/scripts/gvm"
 
+# Create PWS and PCFONE Target/Login aliases
+mkdir -p ~/.cf-pcfone
+mkdir -p ~/.cf-pws
+
+alias pcfone="export CF_HOME=~/.cf-pcfone"
+alias pws="export CF_HOME=~/.cf-pws"
+
+alias pcfone-login="pcfone && cf login --sso -a https://api.run.pcfone.io -o group-platform-engineering-isv-ci-internal -s isv-ci-acceptance"
+alias pws-login="pws && cf login -a api.run.pivotal.io -o platform-eng  -s isv-ci-acceptance"
+
 if [ -f "${HOME}/.bash_user" ]; then
 	source "${HOME}/.bash_user"
 fi 
