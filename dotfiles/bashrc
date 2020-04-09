@@ -76,7 +76,10 @@ cf_prompt() {
   local normal="\\[\\e[0m\\]"
 
   local reset_color="\\[\\e[39m\\]"
-  local config="cat /Users/pivotal/.cf/config.json"
+  if [ -z "${CF_HOME}" ]; then
+    CF_HOME="${HOME}"
+  fi
+  local config="cat ${CF_HOME}/.cf/config.json"
   # local org="$(${config} | jq .OrganizationFields.Name -r)"
   local space="$(${config} | jq .SpaceFields.Name -r)"
 
